@@ -93,3 +93,4 @@ function userInput(){ // This is called in the draw funciton and makes it smooth
 
   keyCode = 0; // to reset the keycode so it dosent jump up and down constantly 
 }
+// git commit   
