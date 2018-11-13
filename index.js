@@ -30,6 +30,7 @@ function setup() {
   mainCharacter.position.x = 50;
   mainCharacter.position.y = groundY - 20;
   console.log(mainCharacter.width)
+
  }
 
 function draw() {
@@ -94,25 +95,24 @@ function userInput(){ // This is called in the draw funciton and makes it smooth
   keyCode = 0; 
 }
 
-// function userInputSprite(character){ // This is called in the draw funciton and makes it smoothly move 
-//   if (keyIsDown(39)){
-//     if ((playerX + playerWidth) < width){
-//       playerX += 4
-//       }
-//     }
-//   else if(keyIsDown(37)){
-//     if (playerX > 1){
-//       playerX -= 4
-//     }
-//   }
+function userInputSprite(sprite){ // This is called in the draw funciton and makes it smoothly move 
+  if (keyIsDown(39)){
+    if ((sprite.position.x + sprite.width) < width){
+      sprite.position.x += 4
+      }
+    }
+  else if(keyIsDown(37)){
+    if (sprite.position.x > 1){
+      sprite.position.x -= 4
+    }
+  }
 
-//   if (!jumping && keyCode === 32) {
-//     //going up
-//     playerSpeedY = -15;
+  if (!jumping && keyCode === 32) {
+    //going up
+    playerSpeedY = -15;
     
-//     //disallow jumping while already jumping
-//     jumping = true;
-//   }
-
-//   keyCode = 0; // to reset the keycode so it dosent jump up and down constantly 
-// }
+    //disallow jumping while already jumping
+    jumping = true;
+  }
+  keyCode = 0; 
+}
