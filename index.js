@@ -37,6 +37,7 @@ function draw() {
   mainCharacterBottomPosition = mainCharacter.position.y - 20 
 
   userInput() // to see if key is pressed
+  userInputSprite(mainCharacter)
 
   background(0, 0, 255); 
   
@@ -73,7 +74,7 @@ function playerGroundHightCollisionStopper(){
   } 
 }
 
-function userInput(){ // This is called in the draw funciton and makes it smoothly move 
+function userInput(){ // This is called in the draw funciton and makes it smoothly move left and right
   if (keyIsDown(39)){
     if ((playerX + playerWidth) < width){
       playerX += 4
@@ -95,7 +96,7 @@ function userInput(){ // This is called in the draw funciton and makes it smooth
   keyCode = 0; 
 }
 
-function userInputSprite(sprite){ // This is called in the draw funciton and makes it smoothly move 
+function userInputSprite(sprite){ // This is called in the draw funciton and makes it smoothly move left and right z
   if (keyIsDown(39)){
     if ((sprite.position.x + sprite.width) < width){
       sprite.position.x += 4
