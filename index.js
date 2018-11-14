@@ -4,9 +4,9 @@
 var spikeImg;
 
 // spikes declared here
-var mainCharacter
+var mainCharacter;
 
-// variables for brick decared here
+// variables for brick declared here
 var groundY = 250;
 var playerX = 140;
 var playerY = 100;
@@ -50,7 +50,7 @@ function draw() {
 
   //move the player
   playerY += playerSpeedY;
-  playerGroundHightCollisionStopper();
+  playerGroundHeightCollisionStopper();
 
   mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
 
@@ -60,7 +60,7 @@ function draw() {
   drawSprites();
 }
 
-function playerGroundHightCollisionStopper() {
+function playerGroundHeightCollisionStopper() {
   //is the player colliding with the ground?
   if (playerY + playerHeight >= groundY) {
     //snap the player's bottom to the ground's position
@@ -80,7 +80,7 @@ function playerGroundHightCollisionStopper() {
 }
 
 function userInput() {
-  // This is called in the draw funciton and makes it smoothly move left and right
+  // This is called in the draw function and makes it smoothly move left and right
   if (keyIsDown(39)) {
     if ((playerX + playerWidth) < width) {
       playerX += 4;
@@ -89,7 +89,7 @@ function userInput() {
   }
   else if (keyIsDown(37)) {
     if (playerX > 1) {
-      playerX -= 4
+      playerX -= 4;
       sprite.position.x -= 4
     }
   }
@@ -106,7 +106,7 @@ function userInput() {
 }
 
 function ignore() {
-  draw()
-  setup()
-  preload()
+  draw();
+  setup();
+  preload();
 }
