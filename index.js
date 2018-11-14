@@ -34,18 +34,13 @@ function setup() {
   mainCharacter.addImage(spikeImg);
   mainCharacter.position.x = 80;
   mainCharacter.position.y = groundY - 20;
-  // mainCharacter.position.y = 50;
 
-  // mainCharacter.position = (100, 100);
-
-  // mainCharacter
 
 }
 
 function draw() {
 
   userInput(); // to see if key is pressed
-  userInputSprite(mainCharacter);
 
   background(0, 0, 255);
 
@@ -88,41 +83,20 @@ function userInput() {
   // This is called in the draw funciton and makes it smoothly move left and right
   if (keyIsDown(39)) {
     if ((playerX + playerWidth) < width) {
-      playerX += 4
+      playerX += 4;
+      sprite.position.x += 4;
     }
   }
   else if (keyIsDown(37)) {
     if (playerX > 1) {
       playerX -= 4
-    }
-  }
-
-  if (!jumping && keyCode === 32) {
-    //going up
-    playerSpeedY = -15;
-    spriteSpeedY = -15;
-
-    //disallow jumping while already jumping
-    jumping = true;
-  }
-  keyCode = 0;
-}
-
-function userInputSprite(sprite) {
-  // This is called in the draw funciton and makes it smoothly move left and right z
-  if (keyIsDown(39)) {
-    if ((sprite.position.x + sprite.width) < width) {
-      sprite.position.x += 4
-    }
-  }
-  else if (keyIsDown(37)) {
-    if (sprite.position.x > 1) {
       sprite.position.x -= 4
     }
   }
 
   if (!jumping && keyCode === 32) {
     //going up
+    playerSpeedY = -15;
     spriteSpeedY = -15;
 
     //disallow jumping while already jumping
