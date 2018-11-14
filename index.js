@@ -1,4 +1,6 @@
 //images declared here
+// import {keyCode, keyIsDown} from "p5/global";
+
 var spikeImg;
 
 // spikes declared here
@@ -23,13 +25,13 @@ function setup() {
   createCanvas(300, 300);
   background(0, 0, 255);        
   
-  mainCharacter = createSprite(1, 1)
+  mainCharacter = createSprite(1, 1);
   mainCharacter.scale = 0.2;
   mainCharacter.addImage(spikeImg);
 
   mainCharacter.position.x = 50;
   mainCharacter.position.y = groundY - 20;
-  console.log(mainCharacter.width)
+  console.log(mainCharacter.width);
 
  }
 
@@ -111,9 +113,15 @@ function userInputSprite(sprite){ // This is called in the draw funciton and mak
   if (!jumping && keyCode === 32) {
     //going up
     playerSpeedY = -15;
-    
+
     //disallow jumping while already jumping
     jumping = true;
   }
   keyCode = 0; 
+}
+
+function ignore() {
+  draw()
+  setup()
+  preload()
 }
