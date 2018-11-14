@@ -1,11 +1,12 @@
-//images declared here
 // import {keyCode, keyIsDown} from "p5/global";
 
+//images declared here
 var spikeImg;
 
 // spikes declared here
 var mainCharacter
 
+// variables for brick decared here
 var groundY = 250;
 var playerX = 140;
 var playerY = 100;
@@ -15,6 +16,9 @@ var playerSpeedY = 0;
 
 //only allow jumping if the player is not already jumping
 var jumping = false;
+
+// main character sprite declared here
+var spriteSpeedY = 0;
 
 function preload() {
   spikeImg = loadImage("Smilee.png")
@@ -28,18 +32,20 @@ function setup() {
   mainCharacter = createSprite(1, 1);
   mainCharacter.scale = 0.2;
   mainCharacter.addImage(spikeImg);
-
-  mainCharacter.position.x = 50;
+  mainCharacter.position.x = 80;
   mainCharacter.position.y = groundY - 20;
-  console.log(mainCharacter.width);
+  // mainCharacter.position.y = 50;
+
+  // mainCharacter.position = (100, 100);
+
+  // mainCharacter
 
 }
 
 function draw() {
-  mainCharacterBottomPosition = mainCharacter.position.y - 20
 
-  userInput() // to see if key is pressed
-  userInputSprite(mainCharacter)
+  userInput(); // to see if key is pressed
+  userInputSprite(mainCharacter);
 
   background(0, 0, 255);
 
@@ -50,6 +56,8 @@ function draw() {
   //move the player
   playerY += playerSpeedY;
   playerGroundHightCollisionStopper();
+
+  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
 
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
@@ -76,7 +84,8 @@ function playerGroundHightCollisionStopper() {
   }
 }
 
-function userInput() { // This is called in the draw funciton and makes it smoothly move left and right
+function userInput() {
+  // This is called in the draw funciton and makes it smoothly move left and right
   if (keyIsDown(39)) {
     if ((playerX + playerWidth) < width) {
       playerX += 4
@@ -91,6 +100,7 @@ function userInput() { // This is called in the draw funciton and makes it smoot
   if (!jumping && keyCode === 32) {
     //going up
     playerSpeedY = -15;
+    spriteSpeedY = -15;
 
     //disallow jumping while already jumping
     jumping = true;
@@ -98,7 +108,8 @@ function userInput() { // This is called in the draw funciton and makes it smoot
   keyCode = 0;
 }
 
-function userInputSprite(sprite) { // This is called in the draw funciton and makes it smoothly move left and right z
+function userInputSprite(sprite) {
+  // This is called in the draw funciton and makes it smoothly move left and right z
   if (keyIsDown(39)) {
     if ((sprite.position.x + sprite.width) < width) {
       sprite.position.x += 4
@@ -112,7 +123,7 @@ function userInputSprite(sprite) { // This is called in the draw funciton and ma
 
   if (!jumping && keyCode === 32) {
     //going up
-    playerSpeedY = -15;
+    spriteSpeedY = -15;
 
     //disallow jumping while already jumping
     jumping = true;
