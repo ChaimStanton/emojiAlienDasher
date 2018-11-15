@@ -43,7 +43,7 @@ function setup() {
 }
 
 function draw() {
-
+  // spriteSpeedY = 0;
   userInput(); // to see if key is pressed
 
   background(0, 0, 255);
@@ -56,11 +56,10 @@ function draw() {
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
 
-  if (mainCharacter.position.y < 231) {
-    if (mainCharacter.position.y > 160) {
-      mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
-    }
-  }
+
+  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+
+  // Todo work out how square moves down and make emoji move down too
 
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
@@ -86,6 +85,12 @@ function playerGroundHeightCollisionStopper() {
     //gravity accelerates the movement speed
     playerSpeedY++;
   }
+
+  if (jumping) {
+    spriteSpeedY = spriteSpeedY + 1;
+    console.log()
+  }
+
 }
 
 function userInput() {
@@ -106,12 +111,14 @@ function userInput() {
   if (!jumping && keyCode === 32) {
     //going up
     playerSpeedY = -15;
-    spriteSpeedY = -5;
+    spriteSpeedY = -15;
 
     //disallow jumping while already jumping
     jumping = true;
   }
+
   keyCode = 0;
+
 }
 
 function ignore() {
