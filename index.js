@@ -44,7 +44,7 @@ function setup() {
 
 function draw() {
 
-  userInput(mainCharacter); // to see if key is pressed
+  userInput(); // to see if key is pressed
 
   background(0, 0, 255);
 
@@ -55,11 +55,12 @@ function draw() {
   //move the player
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
-
+  
   mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
 
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
+
 
   drawSprites();
 }
@@ -83,7 +84,7 @@ function playerGroundHeightCollisionStopper() {
   }
 }
 
-function userInput(sprite) {
+function userInput() {
   // This is called in the draw function and makes it smoothly move left and right
   // if (keyIsDown(39)) {
   //   if ((playerX + playerWidth) < width) {
@@ -101,7 +102,7 @@ function userInput(sprite) {
   if (!jumping && keyCode === 32) {
     //going up
     playerSpeedY = -15;
-    spriteSpeedY = -15;
+    spriteSpeedY = -5;
 
     //disallow jumping while already jumping
     jumping = true;
