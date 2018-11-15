@@ -55,8 +55,12 @@ function draw() {
   //move the player
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
-  
-  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+
+  if (mainCharacter.position.y < 231) {
+    if (mainCharacter.position.y > 200) {
+      mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+    }
+  }
 
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
