@@ -30,7 +30,7 @@ function preload() {
 
 function setup() {
 
-  createCanvas(300, 300);
+  createCanvas(700, 300);
   background(0, 0, 255);
 
   mainCharacter = createSprite(1, 1);
