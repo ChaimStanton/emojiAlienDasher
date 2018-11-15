@@ -85,18 +85,18 @@ function playerGroundHeightCollisionStopper() {
 
 function userInput(sprite) {
   // This is called in the draw function and makes it smoothly move left and right
-  if (keyIsDown(39)) {
-    if ((playerX + playerWidth) < width) {
-      playerX += 4;
-      sprite.position.x += 4;
-    }
-  }
-  else if (keyIsDown(37)) {
-    if (playerX > 1) {
-      playerX -= 4;
-      sprite.position.x -= 4
-    }
-  }
+  // if (keyIsDown(39)) {
+  //   if ((playerX + playerWidth) < width) {
+  //     playerX += 4;
+  //     sprite.position.x += 4;
+  //   }
+  // }
+  // else if (keyIsDown(37)) {
+  //   if (playerX > 1) {
+  //     playerX -= 4;
+  //     sprite.position.x -= 4
+  //   }
+  // }
 
   if (!jumping && keyCode === 32) {
     //going up
