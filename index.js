@@ -67,7 +67,7 @@ function draw() {
 }
 
 function playerGroundHeightCollisionStopper() {
-  //is the player colliding with the ground?
+  // is the player colliding with the ground?
   if (playerY + playerHeight >= groundY) {
     //snap the player's bottom to the ground's position
     playerY = groundY - playerHeight;
@@ -82,6 +82,12 @@ function playerGroundHeightCollisionStopper() {
   else {
     //gravity accelerates the movement speed
     playerSpeedY++;
+  }
+
+  if (mainCharacter.position.y < groundY && !jumping) {
+    mainCharacter.position.y = groundY - mainCharacter.height/2 + 3;
+    spriteSpeedY = 0;
+    jumping = false;
   }
 
   if (jumping) {
