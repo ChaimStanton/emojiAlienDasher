@@ -52,24 +52,20 @@ function draw() {
   stroke(255);
   line(0, groundY, width, groundY);
 
+  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+
   //move the player
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
 
-
-  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
-
-  // Todo work out how square moves down and make emoji move down too
-
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
-
 
   drawSprites();
 }
 
 function playerGroundHeightCollisionStopper() {
-  //is the player colliding with the ground?
+  // is the player colliding with the ground?
   if (playerY + playerHeight >= groundY) {
     //snap the player's bottom to the ground's position
     playerY = groundY - playerHeight;
@@ -84,6 +80,12 @@ function playerGroundHeightCollisionStopper() {
   else {
     //gravity accelerates the movement speed
     playerSpeedY++;
+  }
+
+  if (mainCharacter.position.y < groundY && !jumping) {
+    spriteSpeedY = 0;
+    mainCharacter.position.y = groundY  - mainCharacter.height/2 + 3;
+    jumping = false;
   }
 
   if (jumping) {
