@@ -59,13 +59,6 @@ function draw() {
 
   mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
 
-  // if (mainCharacter.position.y < 231) {
-  //   if (maiCharacter.position.y > 160) {
-  //     mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
-  //   }
-  // }
-
-
   // Todo work out how square moves down and make emoji move down too
 
   //draw the player rectangle
@@ -93,10 +86,10 @@ function playerGroundHeightCollisionStopper() {
     playerSpeedY++;
 }
 
-  // if (mainCharacter.position.x > 160) {
-  //   spriteSpeedY = spriteSpeedY + 1;
-  //   console.log()
-  // }
+  if (jumping) {
+    spriteSpeedY = spriteSpeedY + 1;
+    console.log()
+  }
 
 }
 
@@ -123,9 +116,7 @@ function userInput() {
     //disallow jumping while already jumping
     jumping = true;
   }
-  // if (jumping){
-  //   keyCode = 0;
-  // }
+
   keyCode = 0;
 
 }
