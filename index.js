@@ -84,7 +84,7 @@ function playerGroundHeightCollisionStopper() {
   else {
     //gravity accelerates the movement speed
     playerSpeedY++;
-}
+  }
 
   if (jumping) {
     spriteSpeedY = spriteSpeedY + 1;
