@@ -1,4 +1,8 @@
 // import {keyCode, keyIsDown} from "p5/global";
+// import {createCanvas} from "p5/global";
+// import {Element as sprite} from "p5/lib/addons/p5.dom";
+// import {keyIsDown} from "p5/global";
+
 
 //images declared here
 var spikeImg;
@@ -40,7 +44,7 @@ function setup() {
 
 function draw() {
 
-  userInput(); // to see if key is pressed
+  userInput(mainCharacter); // to see if key is pressed
 
   background(0, 0, 255);
 
@@ -79,7 +83,7 @@ function playerGroundHeightCollisionStopper() {
   }
 }
 
-function userInput() {
+function userInput(sprite) {
   // This is called in the draw function and makes it smoothly move left and right
   if (keyIsDown(39)) {
     if ((playerX + playerWidth) < width) {
