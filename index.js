@@ -57,7 +57,7 @@ function draw() {
   playerGroundHeightCollisionStopper();
 
   if (mainCharacter.position.y < 231) {
-    if (mainCharacter.position.y > 200) {
+    if (mainCharacter.position.y > 160) {
       mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
     }
   }
