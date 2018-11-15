@@ -61,6 +61,7 @@ function draw() {
       mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
     }
   }
+  // Todo work out how square moves down and make emoji move down too
 
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
