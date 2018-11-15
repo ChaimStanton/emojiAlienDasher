@@ -52,16 +52,14 @@ function draw() {
   stroke(255);
   line(0, groundY, width, groundY);
 
+  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+
   //move the player
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
 
-
-  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
-
   //draw the player rectangle
   rect(playerX, playerY, playerWidth, playerHeight);
-
 
   drawSprites();
 }
@@ -85,8 +83,8 @@ function playerGroundHeightCollisionStopper() {
   }
 
   if (mainCharacter.position.y < groundY && !jumping) {
-    mainCharacter.position.y = groundY - mainCharacter.height/2 + 3;
     spriteSpeedY = 0;
+    mainCharacter.position.y = groundY  - mainCharacter.height/2 + 3;
     jumping = false;
   }
 
