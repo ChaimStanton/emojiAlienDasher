@@ -126,6 +126,7 @@ function userInput() {
   // if (jumping){
   //   keyCode = 0;
   // }
+  keyCode = 0;
 
 }
 
