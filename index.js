@@ -6,6 +6,7 @@
 
 //images declared here
 var spikeImg;
+var enemyImg;
 
 // spikes declared here
 var mainCharacter;
@@ -25,7 +26,8 @@ var jumping = false;
 var spriteSpeedY = 0;
 
 function preload() {
-  spikeImg = loadImage("Smilee.png")
+  spikeImg = loadImage("Smilee.png");
+  enemyImg = loadImage("Alien.png");
 }
 
 function setup() {
