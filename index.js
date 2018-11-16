@@ -35,11 +35,20 @@ function setup() {
   createCanvas(700, 300);
   background(0, 0, 255);
 
+  // Main character smilie face created here
   mainCharacter = createSprite(1, 1);
   mainCharacter.scale = 0.2;
   mainCharacter.addImage(spikeImg);
   mainCharacter.position.x = 80;
   mainCharacter.position.y = groundY - 20;
+
+  // Enemy sprite created here
+  enemySprite = createSprite(1,1);
+  enemySprite.scale = 0.2;
+  enemySprite.addImage(enemyImg);
+  enemySprite.position.x = 80;
+  enemySprite.position.y = groundY - 20;
+
 
 
 }
