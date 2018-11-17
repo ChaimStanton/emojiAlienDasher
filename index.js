@@ -42,12 +42,13 @@ function setup() {
   mainCharacter.position.x = 80;
   mainCharacter.position.y = groundY - 20;
 
-  // Enemy sprite created here
+  // Enemy sprite (alien) created here
   enemySprite = createSprite(1,1);
   enemySprite.scale = 0.2;
   enemySprite.addImage(enemyImg);
-  enemySprite.position.x = 80;
+  enemySprite.position.x = width - 25;
   enemySprite.position.y = groundY - 20;
+  enemySprite.setSpeed(3.2, 180);
 
 
 
@@ -89,7 +90,7 @@ function playerGroundHeightCollisionStopper() {
   }
   // //player is not colliding with the ground
   else {
-    //gravity accelerates the movement speed
+    //gravity accelerates the movement speed towards the ground
     playerSpeedY++;
   }
 
