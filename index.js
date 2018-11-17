@@ -49,13 +49,12 @@ function setup() {
 }
 
 function draw() {
-  console.log( );
   if (counter % 100 === 0) {
     // Enemy sprite (alien) created here
     enemySprite = createSprite(1,1);
     enemySprite.scale = 0.2;
     enemySprite.addImage(enemyImg);
-    enemySprite.position.x = width - 25;
+    enemySprite.position.x = width + 20 ;
     enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
   }
