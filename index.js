@@ -3,6 +3,7 @@
 // import {Element as sprite} from "p5/lib/addons/p5.dom";
 // import {keyIsDown} from "p5/global";
 
+var counter = 0;
 
 //images declared here
 var spikeImg;
@@ -10,6 +11,7 @@ var enemyImg;
 
 // spikes declared here
 var mainCharacter;
+var enemySprite;
 
 // variables for brick declared here
 var groundY = 250;
@@ -42,19 +44,25 @@ function setup() {
   mainCharacter.position.x = 80;
   mainCharacter.position.y = groundY - 20;
 
-  // Enemy sprite (alien) created here
-  enemySprite = createSprite(1,1);
-  enemySprite.scale = 0.2;
-  enemySprite.addImage(enemyImg);
-  enemySprite.position.x = width - 25;
-  enemySprite.position.y = groundY - 20;
-  enemySprite.setSpeed(3.2, 180);
-
 
 
 }
 
 function draw() {
+  console.log( );
+  if (counter % 100 === 0) {
+    // Enemy sprite (alien) created here
+    enemySprite = createSprite(1,1);
+    enemySprite.scale = 0.2;
+    enemySprite.addImage(enemyImg);
+    enemySprite.position.x = width - 25;
+    enemySprite.position.y = groundY - 20;
+    enemySprite.setSpeed(3.2, 180);
+  }
+
+  counter++;
+
+
   // spriteSpeedY = 0;
   userInput(); // to see if key is pressed
 
