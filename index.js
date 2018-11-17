@@ -102,7 +102,7 @@ function playerGroundHeightCollisionStopper() {
 
   if (jumping) {
     spriteSpeedY = spriteSpeedY + 1;
-    console.log()
+
   }
 
 }
