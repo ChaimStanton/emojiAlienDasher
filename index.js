@@ -43,9 +43,6 @@ function setup() {
   mainCharacter.addImage(spikeImg);
   mainCharacter.position.x = 80;
   mainCharacter.position.y = groundY - 20;
-
-
-
 }
 
 function draw() {
