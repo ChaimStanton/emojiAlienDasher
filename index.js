@@ -1,8 +1,5 @@
-// import {keyCode, keyIsDown} from "p5/global";
-// import {createCanvas} from "p5/global";
-// import {Element as sprite} from "p5/lib/addons/p5.dom";
-// import {keyIsDown} from "p5/global";
 
+// counter is made for frequency and timings of aliens here
 var counter = 0;
 
 //images declared here
@@ -46,17 +43,20 @@ function setup() {
 }
 
 function draw() {
+
+  //ENVIRONMENT IS DRAWN HERE
   background(0, 0, 255);
 
   //draw the ground
   stroke(255);
   line(0, groundY, width, groundY);
-  makeAliens();
 
+  // ALIENS HERE
+  makeAliens(); // makes aliens come in from the left of the screen
+
+  // PLAYER MOVEMENT IS HERE
   userInput(); // to see if key is pressed
-
   //move the player
-
   mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
