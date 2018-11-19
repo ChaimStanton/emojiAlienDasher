@@ -7,7 +7,7 @@ var spikeImg;
 var enemyImg;
 
 // spikes declared here
-var mainCharacter;
+var mainSprite;
 var enemySprite;
 
 // variables for brick declared here
@@ -35,11 +35,11 @@ function setup() {
   background(0, 0, 255);
 
   // Main character smilie face created here
-  mainCharacter = createSprite(1, 1);
-  mainCharacter.scale = 0.2;
-  mainCharacter.addImage(spikeImg);
-  mainCharacter.position.x = 80;
-  mainCharacter.position.y = groundY - 20;
+  mainSprite = createSprite(1, 1);
+  mainSprite.scale = 0.2;
+  mainSprite.addImage(spikeImg);
+  mainSprite.position.x = 80;
+  mainSprite.position.y = groundY - 20;
 }
 
 function draw() {
@@ -57,7 +57,7 @@ function draw() {
   // PLAYER MOVEMENT IS HERE
   userInput(); // to see if key is pressed
   //move the player
-  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+  mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
 
@@ -85,9 +85,9 @@ function playerGroundHeightCollisionStopper() {
     playerSpeedY++;
   }
 
-  if (mainCharacter.position.y < groundY && !jumping) {
+  if (mainSprite.position.y < groundY && !jumping) {
     spriteSpeedY = 0;
-    mainCharacter.position.y = groundY  - mainCharacter.height/2 + 3;
+    mainSprite.position.y = groundY  - mainSprite.height/2 + 3;
     jumping = false;
   }
 
