@@ -40,6 +40,10 @@ function setup() {
   mainSprite.addImage(spikeImg);
   mainSprite.position.x = 80;
   mainSprite.position.y = groundY - 20;
+  mainSprite.setCollider("circle", 0,0, mainSprite.width/2);
+
+  alienGroup = new Group();
+
 }
 
 function draw() {
@@ -64,6 +68,9 @@ function draw() {
   // draw the player rectangle again
   rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
 
+  if (mainSprite.overlap(alienGroup)) {
+    console.log("A")
+  }
   drawSprites();
 }
 
@@ -123,9 +130,11 @@ function makeAliens() {
     enemySprite.position.x = width + 20;
     enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
+    alienGroup.add(enemySprite);
   }
   counter++; // increment the counter
 }
+
 function ignore() {
   draw();
   setup();
