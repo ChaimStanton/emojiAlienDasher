@@ -1,4 +1,3 @@
-
 // counter is made for frequency and timings of aliens here
 var counter = 0;
 
@@ -65,13 +64,32 @@ function draw() {
   playerGroundHeightCollisionStopper();
 
   // draw the player rectangle again
-  rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
+  //rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
 
-  if (mainSprite.overlap(alienGroup)) {
-    console.log("collision")
-  }
+ 
+
+   mainSprite.overlap(alienGroup, collisionCode);
+
+
+
+
   drawSprites();
 }
+
+
+
+function collisionCode(mainSprite, enemySprite) {
+  
+
+///other code goes here
+  enemySprite.remove();  
+  
+
+} //end collisioncode function
+
+
+
+
 
 function playerGroundHeightCollisionStopper() {
   // is the player colliding with the ground?
@@ -123,11 +141,11 @@ function makeAliens() {
 // make the aliens
   if (counter % 100 === 0) {
     // Enemy sprite (alien) created here
-    enemySprite = createSprite(1, 1);
+    enemySprite = createSprite(width + 20, groundY - 20);
     enemySprite.scale = 0.2;
     enemySprite.addImage(enemyImg);
-    enemySprite.position.x = width + 20;
-    enemySprite.position.y = groundY - 20;
+    //enemySprite.position.x = width + 20;
+    //enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
     alienGroup.add(enemySprite);
   }
