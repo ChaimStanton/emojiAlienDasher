@@ -54,22 +54,12 @@ function draw() {
   //draw the ground
   stroke(255);
   line(0, groundY, width, groundY);
-
-  // make the aliens
-  if (counter % 100 === 0) {
-    // Enemy sprite (alien) created here
-    enemySprite = createSprite(1,1);
-    enemySprite.scale = 0.2;
-    enemySprite.addImage(enemyImg);
-    enemySprite.position.x = width + 20 ;
-    enemySprite.position.y = groundY - 20;
-    enemySprite.setSpeed(3.2, 180);
-  }
-  counter++; // increment the counter
+  makeAliens();
 
   userInput(); // to see if key is pressed
 
   //move the player
+
   mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
@@ -126,6 +116,19 @@ function userInput() {
 
 }
 
+function makeAliens() {
+// make the aliens
+  if (counter % 100 === 0) {
+    // Enemy sprite (alien) created here
+    enemySprite = createSprite(1, 1);
+    enemySprite.scale = 0.2;
+    enemySprite.addImage(enemyImg);
+    enemySprite.position.x = width + 20;
+    enemySprite.position.y = groundY - 20;
+    enemySprite.setSpeed(3.2, 180);
+  }
+  counter++; // increment the counter
+}
 function ignore() {
   draw();
   setup();
