@@ -49,6 +49,13 @@ function setup() {
 }
 
 function draw() {
+  background(0, 0, 255);
+
+  //draw the ground
+  stroke(255);
+  line(0, groundY, width, groundY);
+
+  // make the aliens
   if (counter % 100 === 0) {
     // Enemy sprite (alien) created here
     enemySprite = createSprite(1,1);
@@ -58,27 +65,17 @@ function draw() {
     enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
   }
+  counter++; // increment the counter
 
-  counter++;
-
-
-  // spriteSpeedY = 0;
   userInput(); // to see if key is pressed
 
-  background(0, 0, 255);
-
-  //draw the ground
-  stroke(255);
-  line(0, groundY, width, groundY);
-
-  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
-
   //move the player
+  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
 
-  //draw the player rectangle
-  rect(playerX, playerY, playerWidth, playerHeight);
+  // draw the player rectangle again
+  rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
 
   drawSprites();
 }
