@@ -9,13 +9,8 @@ var enemyImg;
 var mainSprite;
 var enemySprite;
 
-// variables for brick declared here
+// varialbe for ground declared here
 var groundY = 250;
-var playerX = 140;
-var playerY = 100;
-var playerWidth = 20;
-var playerHeight = 50;
-var playerSpeedY = 0;
 
 //only allow jumping if the player is not already jumping
 var jumping = false;
@@ -64,12 +59,7 @@ function draw() {
   userInput(); // to see if key is pressed
   //move the player
   mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
-  playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
-
-  // draw the player rectangle again
-  //rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
-
 
   // if (enemySprite.position.x < 400) {
   //   enemySprite.remove();
@@ -105,41 +95,20 @@ function collisionCode(mainSprite, enemySprite) {
 
 
 function playerGroundHeightCollisionStopper() {
-  // is the player colliding with the ground?
-  if (playerY + playerHeight >= groundY) {
-    //snap the player's bottom to the ground's position
-    playerY = groundY - playerHeight;
-
-    //stop the player falling
-    playerSpeedY = 0;
-
-    //allow jumping again
-    jumping = false;
-  }
-  // //player is not colliding with the ground
-  else {
-    //gravity accelerates the movement speed towards the ground
-    playerSpeedY++;
-  }
-
-  if (mainSprite.position.y < groundY && !jumping) {
+  if (mainSprite.position.y >= groundY - mainSprite.width/2) {
+    mainSprite.position.y = groundY - mainSprite.width/2 + 2;
     spriteSpeedY = 0;
-    mainSprite.position.y = groundY  - mainSprite.height/2 + 3;
-    jumping = false;
+    jumping=false;
   }
-
-  if (jumping) {
-    spriteSpeedY = spriteSpeedY + 1;
-
+  else {
+    spriteSpeedY++;
   }
-
 }
 
 function userInput() {
 
   if (!jumping && keyCode === 32) {
     //going up
-    playerSpeedY = -15;
     spriteSpeedY = -15;
 
     //disallow jumping while already jumping
