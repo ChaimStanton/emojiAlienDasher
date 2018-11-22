@@ -66,10 +66,15 @@ function draw() {
   // draw the player rectangle again
   //rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
 
-   mainSprite.overlap(alienGroup, collisionCode);
 
+   console.log(enemySprite.position.x);
+  if (enemySprite.position.x < 400) {
+    enemySprite.remove();
+    console.log("Enemey sprite removed");
+  }
 
-
+  // Overlap code here
+  mainSprite.overlap(alienGroup, collisionCode);
 
   drawSprites();
 }
