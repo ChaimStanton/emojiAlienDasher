@@ -21,6 +21,8 @@ let spriteSpeedY = 0;
 // This is to hold the value of the a recent sprite
 let enemy;
 
+let highScore = 0;
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
@@ -68,10 +70,11 @@ function draw() {
   }
 
   drawSprites();
+  highScore++;
 }
 
 function collisionCode(mainSprite, enemySprite) {
-  enemySprite.remove();
+  enemySprite.remove(); // this removes the enemy sprite that was collided with
 }
 
 function playerGroundHeightCollisionStopper() {
