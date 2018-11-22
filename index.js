@@ -21,7 +21,9 @@ let spriteSpeedY = 0;
 // This is to hold the value of the a recent sprite
 let enemy;
 
+// high score variables declared here
 let highScore = 0;
+let highScoreText;
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
@@ -58,6 +60,7 @@ function draw() {
 
   // PLAYER MOVEMENT IS HERE
   userInput(); // to see if key is pressed
+
   //move the player
   mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
   playerGroundHeightCollisionStopper();
@@ -69,8 +72,10 @@ function draw() {
     mainSprite.overlap(enemy, collisionCode)
   }
 
+  highScore = highScore + 1;
+  highScoreText = "HS:" + highScore;
+
   drawSprites();
-  highScore++;
 }
 
 function collisionCode(mainSprite, enemySprite) {
