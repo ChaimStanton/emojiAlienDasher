@@ -1,14 +1,13 @@
-// import {keyCode, keyIsDown} from "p5/global";
-// import {createCanvas} from "p5/global";
-// import {Element as sprite} from "p5/lib/addons/p5.dom";
-// import {keyIsDown} from "p5/global";
-
+// counter is made for frequency and timings of aliens here
+var counter = 0;
 
 //images declared here
 var spikeImg;
+var enemyImg;
 
 // spikes declared here
-var mainCharacter;
+var mainSprite;
+var enemySprite;
 
 // variables for brick declared here
 var groundY = 250;
@@ -25,7 +24,8 @@ var jumping = false;
 var spriteSpeedY = 0;
 
 function preload() {
-  spikeImg = loadImage("Smilee.png")
+  spikeImg = loadImage("Smilee.png");
+  enemyImg = loadImage("Alien.png");
 }
 
 function setup() {
@@ -33,36 +33,76 @@ function setup() {
   createCanvas(700, 300);
   background(0, 0, 255);
 
-  mainCharacter = createSprite(1, 1);
-  mainCharacter.scale = 0.2;
-  mainCharacter.addImage(spikeImg);
-  mainCharacter.position.x = 80;
-  mainCharacter.position.y = groundY - 20;
+  mainSpriteGroup = new Group();
 
+  // Main character smilie face created here
+  mainSprite = createSprite(1, 1);
+  mainSprite.scale = 0.2;
+  mainSprite.addImage(spikeImg);
+  mainSprite.position.x = 80;
+  mainSprite.position.y = groundY - 20;
+  mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
+  mainSpriteGroup.add(mainSprite);
+
+  alienGroup = new Group();
 
 }
 
 function draw() {
-  // spriteSpeedY = 0;
-  userInput(); // to see if key is pressed
 
+  //ENVIRONMENT IS DRAWN HERE
   background(0, 0, 255);
 
   //draw the ground
   stroke(255);
   line(0, groundY, width, groundY);
 
-  mainCharacter.position.y = mainCharacter.position.y + spriteSpeedY;
+  // ALIENS HERE
+  makeAliens(); // makes aliens come in from the left of the screen
 
+  // PLAYER MOVEMENT IS HERE
+  userInput(); // to see if key is pressed
   //move the player
+  mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
   playerY += playerSpeedY;
   playerGroundHeightCollisionStopper();
 
-  //draw the player rectangle
-  rect(playerX, playerY, playerWidth, playerHeight);
+  // draw the player rectangle again
+  //rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
+
+
+  // if (enemySprite.position.x < 400) {
+  //   enemySprite.remove();
+  //   console.log("Enemey sprite removed");
+  // }
+
+  // Overlap code here
+  mainSprite.overlap(alienGroup, collisionCode);
+  for (var i = 1; i < alienGroup.length; i++) {
+    enemy = alienGroup[i];
+    mainSprite.overlap(enemy, collisionCode)
+  }
+
+  // mainSpriteGroup.overlap(alienGroup, collisionCode);
+  // if (mainSprite.touching(alienGroup)) {
+  //   console.log("aaa")
+  // }
 
   drawSprites();
 }
+
+
+
+function collisionCode(mainSprite, enemySprite) {
+  
+
+///other code goes here
+  enemySprite.remove();
+
+
+} //end collisioncode function
+
+
 
 function playerGroundHeightCollisionStopper() {
   // is the player colliding with the ground?
@@ -78,19 +118,19 @@ function playerGroundHeightCollisionStopper() {
   }
   // //player is not colliding with the ground
   else {
-    //gravity accelerates the movement speed
+    //gravity accelerates the movement speed towards the ground
     playerSpeedY++;
   }
 
-  if (mainCharacter.position.y < groundY && !jumping) {
+  if (mainSprite.position.y < groundY && !jumping) {
     spriteSpeedY = 0;
-    mainCharacter.position.y = groundY  - mainCharacter.height/2 + 3;
+    mainSprite.position.y = groundY  - mainSprite.height/2 + 3;
     jumping = false;
   }
 
   if (jumping) {
     spriteSpeedY = spriteSpeedY + 1;
-    console.log()
+
   }
 
 }
@@ -108,6 +148,22 @@ function userInput() {
 
   keyCode = 0;
 
+}
+
+function makeAliens() {
+// make the aliens
+  if (counter % 100 === 0) {
+    // Enemy sprite (alien) created here
+    enemySprite = createSprite(width + 20, groundY - 20);
+    enemySprite.scale = 0.2;
+    enemySprite.addImage(enemyImg);
+    //enemySprite.position.x = width + 20;
+    //enemySprite.position.y = groundY - 20;
+    enemySprite.setSpeed(3.2, 180);
+    // enemySprite.setCollider("circle", 0,0, enemySprite.width/2)
+    alienGroup.add(enemySprite);
+  }
+  counter++; // increment the counter
 }
 
 function ignore() {
