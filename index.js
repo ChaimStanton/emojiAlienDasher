@@ -67,13 +67,9 @@ function draw() {
   drawSprites();
 }
 
-
-
 function collisionCode(mainSprite, enemySprite) {
   enemySprite.remove();
 }
-
-
 
 function playerGroundHeightCollisionStopper() {
   if (mainSprite.position.y >= groundY - mainSprite.width/2) {
@@ -107,10 +103,7 @@ function makeAliens() {
     enemySprite = createSprite(width + 20, groundY - 20);
     enemySprite.scale = 0.2;
     enemySprite.addImage(enemyImg);
-    //enemySprite.position.x = width + 20;
-    //enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
-    // enemySprite.setCollider("circle", 0,0, enemySprite.width/2)
     alienGroup.add(enemySprite);
   }
   counter++; // increment the counter
