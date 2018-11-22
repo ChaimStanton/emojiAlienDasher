@@ -72,8 +72,16 @@ function draw() {
     mainSprite.overlap(enemy, collisionCode)
   }
 
+  //HIGH SCORE DIALOGUE MADE HERE
+  //high score text made here
   highScore = highScore + 1;
   highScoreText = "HS:" + highScore;
+
+  //high score displayed here
+  fill(255,0,0);
+  textSize(30);
+  text(highScoreText, width-150, 25);
+
 
   drawSprites();
 }
