@@ -1,22 +1,22 @@
 // counter is made for frequency and timings of aliens here
-var counter = 0;
+let counter = 0;
 
 //images declared here
-var spikeImg;
-var enemyImg;
+let spikeImg;
+let enemyImg;
 
 // spikes declared here
-var mainSprite;
-var enemySprite;
+let mainSprite;
+let enemySprite;
 
-// varialbe for ground declared here
-var groundY = 250;
+// variable for ground declared here
+const groundY = 250;
 
 //only allow jumping if the player is not already jumping
-var jumping = false;
+let jumping = false;
 
 // main character sprite declared here
-var spriteSpeedY = 0;
+let spriteSpeedY = 0;
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
@@ -28,19 +28,15 @@ function setup() {
   createCanvas(700, 300);
   background(0, 0, 255);
 
-  mainSpriteGroup = new Group();
-
-  // Main character smilie face created here
+  // Main character smiley face created here
   mainSprite = createSprite(1, 1);
   mainSprite.scale = 0.2;
   mainSprite.addImage(spikeImg);
   mainSprite.position.x = 80;
   mainSprite.position.y = groundY - 20;
   mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
-  mainSpriteGroup.add(mainSprite);
 
   alienGroup = new Group();
-
 }
 
 function draw() {
@@ -61,11 +57,6 @@ function draw() {
   mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
   playerGroundHeightCollisionStopper();
 
-  // if (enemySprite.position.x < 400) {
-  //   enemySprite.remove();
-  //   console.log("Enemey sprite removed");
-  // }
-
   // Overlap code here
   mainSprite.overlap(alienGroup, collisionCode);
   for (var i = 1; i < alienGroup.length; i++) {
@@ -73,26 +64,12 @@ function draw() {
     mainSprite.overlap(enemy, collisionCode)
   }
 
-  // mainSpriteGroup.overlap(alienGroup, collisionCode);
-  // if (mainSprite.touching(alienGroup)) {
-  //   console.log("aaa")
-  // }
-
   drawSprites();
 }
 
-
-
 function collisionCode(mainSprite, enemySprite) {
-  
-
-///other code goes here
   enemySprite.remove();
-
-
-} //end collisioncode function
-
-
+}
 
 function playerGroundHeightCollisionStopper() {
   if (mainSprite.position.y >= groundY - mainSprite.width/2) {
@@ -115,21 +92,18 @@ function userInput() {
     jumping = true;
   }
 
-  keyCode = 0;
+  keyCode = 0; // this is the code of what the user has input
 
 }
 
 function makeAliens() {
-// make the aliens
+  // make the aliens
   if (counter % 100 === 0) {
     // Enemy sprite (alien) created here
     enemySprite = createSprite(width + 20, groundY - 20);
     enemySprite.scale = 0.2;
     enemySprite.addImage(enemyImg);
-    //enemySprite.position.x = width + 20;
-    //enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
-    // enemySprite.setCollider("circle", 0,0, enemySprite.width/2)
     alienGroup.add(enemySprite);
   }
   counter++; // increment the counter
