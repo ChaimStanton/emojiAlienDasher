@@ -33,6 +33,8 @@ function setup() {
   createCanvas(700, 300);
   background(0, 0, 255);
 
+  mainSpriteGroup = new Group();
+
   // Main character smilie face created here
   mainSprite = createSprite(1, 1);
   mainSprite.scale = 0.2;
@@ -40,6 +42,8 @@ function setup() {
   mainSprite.position.x = 80;
   mainSprite.position.y = groundY - 20;
   mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
+  mainSpriteGroup.add(mainSprite);
+
   alienGroup = new Group();
 
 }
@@ -67,14 +71,22 @@ function draw() {
   //rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
 
 
-   console.log(enemySprite.position.x);
-  if (enemySprite.position.x < 400) {
-    enemySprite.remove();
-    console.log("Enemey sprite removed");
-  }
+  // if (enemySprite.position.x < 400) {
+  //   enemySprite.remove();
+  //   console.log("Enemey sprite removed");
+  // }
 
   // Overlap code here
   mainSprite.overlap(alienGroup, collisionCode);
+  for (var i = 1; i < alienGroup.length; i++) {
+    enemy = alienGroup[i];
+    mainSprite.overlap(enemy, collisionCode)
+  }
+
+  // mainSpriteGroup.overlap(alienGroup, collisionCode);
+  // if (mainSprite.touching(alienGroup)) {
+  //   console.log("aaa")
+  // }
 
   drawSprites();
 }
@@ -85,12 +97,10 @@ function collisionCode(mainSprite, enemySprite) {
   
 
 ///other code goes here
-  enemySprite.remove();  
-  
+  enemySprite.remove();
+
 
 } //end collisioncode function
-
-
 
 
 
@@ -150,6 +160,7 @@ function makeAliens() {
     //enemySprite.position.x = width + 20;
     //enemySprite.position.y = groundY - 20;
     enemySprite.setSpeed(3.2, 180);
+    // enemySprite.setCollider("circle", 0,0, enemySprite.width/2)
     alienGroup.add(enemySprite);
   }
   counter++; // increment the counter
