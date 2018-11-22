@@ -18,6 +18,9 @@ let jumping = false;
 // main character sprite declared here
 let spriteSpeedY = 0;
 
+// This is to hold the value of the a recent sprite
+let enemy;
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
@@ -59,7 +62,7 @@ function draw() {
 
   // Overlap code here
   mainSprite.overlap(alienGroup, collisionCode);
-  for (var i = 1; i < alienGroup.length; i++) {
+  for (let i = 1; i < alienGroup.length; i++) {
     enemy = alienGroup[i];
     mainSprite.overlap(enemy, collisionCode)
   }
