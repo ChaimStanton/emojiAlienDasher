@@ -37,7 +37,6 @@ function setup() {
   mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
 
   alienGroup = new Group();
-
 }
 
 function draw() {
@@ -58,11 +57,6 @@ function draw() {
   mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
   playerGroundHeightCollisionStopper();
 
-  // if (enemySprite.position.x < 400) {
-  //   enemySprite.remove();
-  //   console.log("Enemy sprite removed");
-  // }
-
   // Overlap code here
   mainSprite.overlap(alienGroup, collisionCode);
   for (var i = 1; i < alienGroup.length; i++) {
@@ -70,24 +64,14 @@ function draw() {
     mainSprite.overlap(enemy, collisionCode)
   }
 
-  // mainSpriteGroup.overlap(alienGroup, collisionCode);
-  // if (mainSprite.touching(alienGroup)) {
-  //   console.log("aaa")
-  // }
-
   drawSprites();
 }
 
 
 
 function collisionCode(mainSprite, enemySprite) {
-  
-
-///other code goes here
   enemySprite.remove();
-
-
-} //end collision code function
+}
 
 
 
@@ -112,12 +96,12 @@ function userInput() {
     jumping = true;
   }
 
-  keyCode = 0;
+  keyCode = 0; // this is the code of what the user has input
 
 }
 
 function makeAliens() {
-// make the aliens
+  // make the aliens
   if (counter % 100 === 0) {
     // Enemy sprite (alien) created here
     enemySprite = createSprite(width + 20, groundY - 20);
