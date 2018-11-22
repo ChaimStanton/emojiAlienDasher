@@ -1,22 +1,22 @@
 // counter is made for frequency and timings of aliens here
-var counter = 0;
+let counter = 0;
 
 //images declared here
-var spikeImg;
-var enemyImg;
+let spikeImg;
+let enemyImg;
 
 // spikes declared here
-var mainSprite;
-var enemySprite;
+let mainSprite;
+let enemySprite;
 
 // varialbe for ground declared here
-var groundY = 250;
+const groundY = 250;
 
 //only allow jumping if the player is not already jumping
-var jumping = false;
+let jumping = false;
 
 // main character sprite declared here
-var spriteSpeedY = 0;
+let spriteSpeedY = 0;
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
