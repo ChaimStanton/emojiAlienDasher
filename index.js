@@ -39,7 +39,7 @@ function setup() {
   mainSprite.addImage(spikeImg);
   mainSprite.position.x = 80;
   mainSprite.position.y = groundY - 20;
-  mainSprite.setCollider("circle", 0,0, mainSprite.width/1.5);
+  mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
   alienGroup = new Group();
 
 }
@@ -65,8 +65,6 @@ function draw() {
 
   // draw the player rectangle again
   //rect(playerX, playerY, playerWidth, playerHeight); // this line is not necessary, but is included for logic reasons
-
- 
 
    mainSprite.overlap(alienGroup, collisionCode);
 
