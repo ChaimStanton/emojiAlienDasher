@@ -28,8 +28,6 @@ function setup() {
   createCanvas(700, 300);
   background(0, 0, 255);
 
-  mainSpriteGroup = new Group();
-
   // Main character smilie face created here
   mainSprite = createSprite(1, 1);
   mainSprite.scale = 0.2;
@@ -37,7 +35,6 @@ function setup() {
   mainSprite.position.x = 80;
   mainSprite.position.y = groundY - 20;
   mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
-  mainSpriteGroup.add(mainSprite);
 
   alienGroup = new Group();
 
