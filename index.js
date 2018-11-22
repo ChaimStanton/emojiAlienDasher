@@ -9,7 +9,7 @@ let enemyImg;
 let mainSprite;
 let enemySprite;
 
-// varialbe for ground declared here
+// variable for ground declared here
 const groundY = 250;
 
 //only allow jumping if the player is not already jumping
@@ -28,7 +28,7 @@ function setup() {
   createCanvas(700, 300);
   background(0, 0, 255);
 
-  // Main character smilie face created here
+  // Main character smiley face created here
   mainSprite = createSprite(1, 1);
   mainSprite.scale = 0.2;
   mainSprite.addImage(spikeImg);
@@ -60,7 +60,7 @@ function draw() {
 
   // if (enemySprite.position.x < 400) {
   //   enemySprite.remove();
-  //   console.log("Enemey sprite removed");
+  //   console.log("Enemy sprite removed");
   // }
 
   // Overlap code here
@@ -87,7 +87,7 @@ function collisionCode(mainSprite, enemySprite) {
   enemySprite.remove();
 
 
-} //end collisioncode function
+} //end collision code function
 
 
 
