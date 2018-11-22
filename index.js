@@ -18,6 +18,13 @@ let jumping = false;
 // main character sprite declared here
 let spriteSpeedY = 0;
 
+// This is to hold the value of the a recent sprite
+let enemy;
+
+// high score variables declared here
+let highScore = 0;
+let highScoreText;
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
@@ -53,22 +60,34 @@ function draw() {
 
   // PLAYER MOVEMENT IS HERE
   userInput(); // to see if key is pressed
+
   //move the player
   mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
   playerGroundHeightCollisionStopper();
 
   // Overlap code here
   mainSprite.overlap(alienGroup, collisionCode);
-  for (var i = 1; i < alienGroup.length; i++) {
+  for (let i = 1; i < alienGroup.length; i++) {
     enemy = alienGroup[i];
     mainSprite.overlap(enemy, collisionCode)
   }
+
+  //HIGH SCORE DIALOGUE MADE HERE
+  //high score text made here
+  highScore = highScore + 1;
+  highScoreText = "HS:" + highScore;
+
+  //high score displayed here
+  fill(255,0,0);
+  textSize(30);
+  text(highScoreText, width-150, 25);
+
 
   drawSprites();
 }
 
 function collisionCode(mainSprite, enemySprite) {
-  enemySprite.remove();
+  enemySprite.remove(); // this removes the enemy sprite that was collided with
 }
 
 function playerGroundHeightCollisionStopper() {
