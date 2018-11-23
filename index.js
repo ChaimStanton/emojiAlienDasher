@@ -115,6 +115,16 @@ function userInput() {
 
 }
 
+function mousePressed() {
+  if (!jumping) {
+    //going up
+    spriteSpeedY = -15;
+
+    //disallow jumping while already jumping
+    jumping = true;
+  }
+}
+
 function makeAliens() {
   // make the aliens
   if (counter % 100 === 0) {
