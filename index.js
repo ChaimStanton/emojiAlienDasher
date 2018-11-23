@@ -115,13 +115,19 @@ function playerGroundHeightCollisionStopper() {
 }
 
 function userInput() {
+  if (gameIsBeingPlayed) {
+    if (!jumping && keyCode === 32) {
+      //going up
+      spriteSpeedY = -15;
 
-  if (!jumping && keyCode === 32) {
-    //going up
-    spriteSpeedY = -15;
-
-    //disallow jumping while already jumping
-    jumping = true;
+      //disallow jumping while already jumping
+      jumping = true;
+    }
+  } else {
+    console.log("");
+    if (keyCode === 32){ // space is pressed
+      gameIsBeingPlayed = true;
+    }
   }
 
   keyCode = 0; // this is the code of what the user has input
