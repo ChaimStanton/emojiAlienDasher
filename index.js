@@ -88,6 +88,13 @@ function setup() {
       drawSprites();
     } else {
       //put game ended code here
+      background(255, 0, 0);
+      textSize(50);
+      text("GAME OVER", 20, 50);
+
+      text("Your high score is " + highScore, 20, 100);
+
+      text("Press space to restart", 20, 150);
     }
 }
 
