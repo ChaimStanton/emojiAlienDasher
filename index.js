@@ -93,6 +93,7 @@ function setup() {
 
 function collisionCode(mainSprite, enemySprite) {
   enemySprite.remove(); // this removes the enemy sprite that was collided with
+  gameIsBeingPlayed = false;
 }
 
 function playerGroundHeightCollisionStopper() {
