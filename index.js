@@ -25,6 +25,8 @@ let enemy;
 let highScore = 0;
 let highScoreText;
 
+let gameIsBeingPlayed = true;
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
@@ -46,44 +48,47 @@ function setup() {
   alienGroup = new Group();
 }
 
-function draw() {
+  function draw() {
+    background(0, 0, 255);
+    if (gameIsBeingPlayed) {
+      //ENVIRONMENT IS DRAWN HERE
 
-  //ENVIRONMENT IS DRAWN HERE
-  background(0, 0, 255);
+      //draw the ground
+      stroke(255);
+      line(0, groundY, width, groundY);
 
-  //draw the ground
-  stroke(255);
-  line(0, groundY, width, groundY);
+      // ALIENS HERE
+      makeAliens(); // makes aliens come in from the left of the screen
 
-  // ALIENS HERE
-  makeAliens(); // makes aliens come in from the left of the screen
+      // PLAYER MOVEMENT IS HERE
+      userInput(); // to see if key is pressed
 
-  // PLAYER MOVEMENT IS HERE
-  userInput(); // to see if key is pressed
+      //move the player
+      mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
+      playerGroundHeightCollisionStopper();
 
-  //move the player
-  mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
-  playerGroundHeightCollisionStopper();
+      // Overlap code here
+      mainSprite.overlap(alienGroup, collisionCode);
+      for (let i = 1; i < alienGroup.length; i++) {
+        enemy = alienGroup[i];
+        mainSprite.overlap(enemy, collisionCode)
+      }
 
-  // Overlap code here
-  mainSprite.overlap(alienGroup, collisionCode);
-  for (let i = 1; i < alienGroup.length; i++) {
-    enemy = alienGroup[i];
-    mainSprite.overlap(enemy, collisionCode)
-  }
+      //HIGH SCORE DIALOGUE MADE HERE
+      //high score text made here
+      highScore = highScore + 1;
+      highScoreText = "HS:" + highScore;
 
-  //HIGH SCORE DIALOGUE MADE HERE
-  //high score text made here
-  highScore = highScore + 1;
-  highScoreText = "HS:" + highScore;
-
-  //high score displayed here
-  fill(255,0,0);
-  textSize(30);
-  text(highScoreText, width-150, 25);
+      //high score displayed here
+      fill(255, 0, 0);
+      textSize(30);
+      text(highScoreText, width - 150, 25);
 
 
-  drawSprites();
+      drawSprites();
+    } else {
+      //put game ended code here
+    }
 }
 
 function collisionCode(mainSprite, enemySprite) {
