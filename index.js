@@ -80,6 +80,7 @@ function draw() {
   //high score displayed here
   fill(255,0,0);
   textSize(30);
+  strokeWeight(0);
   text(highScoreText, width-150, 25);
 
 
