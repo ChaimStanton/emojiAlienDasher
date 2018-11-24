@@ -95,6 +95,8 @@ function setup() {
       text("Your high score is " + highScore, 20, 100);
 
       text("Press space to restart", 20, 150);
+
+      userInput();
     }
 }
 
@@ -127,6 +129,7 @@ function userInput() {
     console.log("");
     if (keyCode === 32){ // space is pressed
       gameIsBeingPlayed = true;
+      highScore = 0;
     }
   }
 
