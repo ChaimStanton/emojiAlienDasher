@@ -92,7 +92,11 @@ function setup() {
       textSize(50);
       text("GAME OVER", 20, 50);
 
-      text("Your high score is " + highScore, 20, 100);
+      //high score displayed here
+     fill(255,0,0);
+     textSize(30);
+     strokeWeight(0);
+     text(highScoreText, width-150, 25);
 
       text("Press space to restart", 20, 150);
 
