@@ -61,7 +61,7 @@ function setup() {
       makeAliens(); // makes aliens come in from the left of the screen
 
       // PLAYER MOVEMENT IS HERE
-      gamePlayUserInput(); // to see if key is pressed
+      userInput(); // to see if key is pressed
 
       //move the player
       mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
@@ -92,16 +92,9 @@ function setup() {
       textSize(50);
       text("GAME OVER", 20, 50);
 
-      //high score displayed here
-     fill(255,0,0);
-     textSize(30);
-     strokeWeight(0);
-     text(highScoreText, width-150, 25);
+      text("Your high score is " + highScore, 20, 100);
 
       text("Press space to restart", 20, 150);
-
-      // gamePlayUserInput();
-      endGameUserInput();
     }
 }
 
@@ -121,7 +114,8 @@ function playerGroundHeightCollisionStopper() {
   }
 }
 
-function gamePlayUserInput() {
+function userInput() {
+
   if (!jumping && keyCode === 32) {
     //going up
     spriteSpeedY = -15;
@@ -130,16 +124,8 @@ function gamePlayUserInput() {
     jumping = true;
   }
 
-
   keyCode = 0; // this is the code of what the user has input
 
-}
-
-function endGameUserInput() {
-  if (keyCode === 32){ // space is pressed
-    gameIsBeingPlayed = true;
-    highScore = 0;
-  }
 }
 
 function mousePressed() {
