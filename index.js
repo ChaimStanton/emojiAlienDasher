@@ -27,7 +27,13 @@ let enemy;
 let highScore = 0;
 let highScoreText;
 
+// Boolean for gameplay
 let gameIsBeingPlayed = true;
+
+// Sprite groups made here
+let mainSpriteGroup;
+let alienGroup;
+let facePalmSpriteGroup;
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
@@ -55,7 +61,9 @@ function setup() {
 
   // facepalm sprite created here
   facePalmSprite = createSprite();
-  // facePalmSprite.scale = 0.3;
+  facePalmSpriteGroup = new Group(); // this is necessary as:
+  // p5play only lets you draw individual sprites if they are part of a group
+  facePalmSpriteGroup.add(facePalmSprite);
 }
 
   function draw() {
@@ -108,12 +116,12 @@ function setup() {
 
       text("To restart: \npress space \nor click or touch anywhere", 20, 151);
 
-      // // facepalm sprite created here
-      // facePalmSprite.position.x = 1;
-      // facePalmSprite.position.y = 1;
+      // facepalm sprite created here
+      facePalmSprite.position.x = 450;
+      facePalmSprite.position.y = 50;
+      facePalmSpriteGroup.draw();
 
       endGameUserInput();
-      // drawSprites();
     }
 }
 
