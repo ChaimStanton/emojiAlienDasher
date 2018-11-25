@@ -97,7 +97,7 @@ function setup() {
 
       text("To restart: \npress space \nor click or touch anywhere", 20, 151);
 
-      userInput();
+      endGameUserInput();
     }
 }
 
@@ -138,6 +138,13 @@ function userInput() {
 
 }
 
+function endGameUserInput() {
+  if (keyCode === 32) { // space is pressed
+    gameIsBeingPlayed = true;
+    highScore = 0;
+  }
+}
+
 function mousePressed() {
   if (!jumping && gameIsBeingPlayed) {
     //going up
@@ -152,21 +159,21 @@ function mousePressed() {
 
 }
 
-function makeAliens() {
-  // make the aliens
-  if (counter % 100 === 0) {
-    // Enemy sprite (alien) created here
-    enemySprite = createSprite(width + 20, groundY - 20);
-    enemySprite.scale = 0.2;
-    enemySprite.addImage(enemyImg);
-    enemySprite.setSpeed(3.2, 180);
-    alienGroup.add(enemySprite);
+  function makeAliens() {
+    // make the aliens
+    if (counter % 100 === 0) {
+      // Enemy sprite (alien) created here
+      enemySprite = createSprite(width + 20, groundY - 20);
+      enemySprite.scale = 0.2;
+      enemySprite.addImage(enemyImg);
+      enemySprite.setSpeed(3.2, 180);
+      alienGroup.add(enemySprite);
+    }
+    counter++; // increment the counter
   }
-  counter++; // increment the counter
-}
 
-function ignore() {
-  draw();
-  setup();
-  preload();
-}
+  function ignore() {
+    draw();
+    setup();
+    preload();
+  }
