@@ -95,7 +95,7 @@ function setup() {
 
       text("Your high score is " + highScore, 20, 100);
 
-      text("Press space to restart", 20, 150);
+      text("To restart: \npress space \nor click or touch anywhere", 20, 151);
 
       userInput();
     }
@@ -139,13 +139,17 @@ function userInput() {
 }
 
 function mousePressed() {
-  if (!jumping) {
+  if (!jumping && gameIsBeingPlayed) {
     //going up
     spriteSpeedY = -15;
 
     //disallow jumping while already jumping
     jumping = true;
+  } else if (!gameIsBeingPlayed){
+    gameIsBeingPlayed = true;
   }
+
+
 }
 
 function makeAliens() {
