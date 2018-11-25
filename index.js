@@ -4,10 +4,12 @@ let counter = 0;
 //images declared here
 let spikeImg;
 let enemyImg;
+let facePalmImg;
 
 // spikes declared here
 let mainSprite;
 let enemySprite;
+let facePalmSprite;
 
 // variable for ground declared here
 const groundY = 250;
@@ -30,6 +32,7 @@ let gameIsBeingPlayed = true;
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
+  facePalmImg = loadImage("facePalm.png");
 }
 
 function setup() {
@@ -46,6 +49,13 @@ function setup() {
   mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
 
   alienGroup = new Group();
+
+  mainSpriteGroup = new Group(); // a group for the main sprite this is necessary to the sprites can be drawn seperatly
+  mainSpriteGroup.add(mainSprite);
+
+  // facepalm sprite created here
+  facePalmSprite = createSprite();
+  // facePalmSprite.scale = 0.3;
 }
 
   function draw() {
@@ -85,8 +95,9 @@ function setup() {
       strokeWeight(0);
       text(highScoreText, width - 150, 25);
 
-
-      drawSprites();
+      mainSpriteGroup.draw();
+      alienGroup.draw();
+      // drawSprites();
     } else {
       //put game ended code here
       background(255, 0, 0);
@@ -97,7 +108,12 @@ function setup() {
 
       text("To restart: \npress space \nor click or touch anywhere", 20, 151);
 
+      // // facepalm sprite created here
+      // facePalmSprite.position.x = 1;
+      // facePalmSprite.position.y = 1;
+
       endGameUserInput();
+      // drawSprites();
     }
 }
 
