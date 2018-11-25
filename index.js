@@ -61,7 +61,7 @@ function setup() {
       makeAliens(); // makes aliens come in from the left of the screen
 
       // PLAYER MOVEMENT IS HERE
-      gamePlayUserInput(); // to see if key is pressed
+      userInput(); // to see if key is pressed
 
       //move the player
       mainSprite.position.y = mainSprite.position.y + spriteSpeedY;
@@ -117,13 +117,21 @@ function playerGroundHeightCollisionStopper() {
   }
 }
 
-function gamePlayUserInput() {
-  if (!jumping && keyCode === 32) {
-    //going up
-    spriteSpeedY = -15;
+function userInput() {
+  if (gameIsBeingPlayed) {
+    if (!jumping && keyCode === 32) {
+      //going up
+      spriteSpeedY = -15;
 
-    //disallow jumping while already jumping
-    jumping = true;
+      //disallow jumping while already jumping
+      jumping = true;
+    }
+  } else {
+    console.log("");
+    if (keyCode === 32){ // space is pressed
+      gameIsBeingPlayed = true;
+      highScore = 0;
+    }
   }
 
   keyCode = 0; // this is the code of what the user has input
