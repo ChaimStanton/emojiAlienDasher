@@ -62,6 +62,7 @@ function setup() {
   // facepalm sprite created here
   facePalmSprite = createSprite();
   facePalmSpriteGroup = new Group(); // this is necessary as:
+  facePalmSprite.addImage(facePalmImg);
   // p5play only lets you draw individual sprites if they are part of a group
   facePalmSpriteGroup.add(facePalmSprite);
 }
@@ -117,8 +118,8 @@ function setup() {
       text("To restart: \npress space \nor click or touch anywhere", 20, 151);
 
       // facepalm sprite created here
-      facePalmSprite.position.x = 450;
-      facePalmSprite.position.y = 50;
+      facePalmSprite.position.x = 600;
+      facePalmSprite.position.y = 100;
       facePalmSpriteGroup.draw();
 
       endGameUserInput();
