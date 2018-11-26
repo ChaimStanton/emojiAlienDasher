@@ -4,10 +4,12 @@ let counter = 0;
 //images declared here
 let spikeImg;
 let enemyImg;
+let facePalmImg;
 
 // spikes declared here
 let mainSprite;
 let enemySprite;
+let facePalmSprite;
 
 // variable for ground declared here
 const groundY = 250;
@@ -25,11 +27,18 @@ let enemy;
 let highScore = 0;
 let highScoreText;
 
+// Boolean for gameplay
 let gameIsBeingPlayed = true;
+
+// Sprite groups made here
+let mainSpriteGroup;
+let alienGroup;
+let facePalmSpriteGroup;
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
+  facePalmImg = loadImage("facePalm.png");
 }
 
 function setup() {
@@ -46,6 +55,16 @@ function setup() {
   mainSprite.setCollider("circle", 0, 0, mainSprite.width/1.5, mainSprite.width/1.5);
 
   alienGroup = new Group();
+
+  mainSpriteGroup = new Group(); // a group for the main sprite this is necessary to the sprites can be drawn seperatly
+  mainSpriteGroup.add(mainSprite);
+
+  // facepalm sprite created here
+  facePalmSprite = createSprite();
+  facePalmSpriteGroup = new Group(); // this is necessary as:
+  facePalmSprite.addImage(facePalmImg);
+  // p5play only lets you draw individual sprites if they are part of a group
+  facePalmSpriteGroup.add(facePalmSprite);
 }
 
   function draw() {
@@ -85,8 +104,9 @@ function setup() {
       strokeWeight(0);
       text(highScoreText, width - 150, 25);
 
-
-      drawSprites();
+      mainSpriteGroup.draw();
+      alienGroup.draw();
+      // drawSprites();
     } else {
       //put game ended code here
       background(255, 0, 0);
@@ -96,6 +116,11 @@ function setup() {
       text("Your high score is " + highScore, 20, 100);
 
       text("To restart: \npress space \nor click or touch anywhere", 20, 151);
+
+      // facepalm sprite created here
+      facePalmSprite.position.x = 600;
+      facePalmSprite.position.y = 100;
+      facePalmSpriteGroup.draw();
 
       endGameUserInput();
     }
