@@ -35,6 +35,8 @@ let mainSpriteGroup;
 let alienGroup;
 let facePalmSpriteGroup;
 
+let randomNumber;
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
@@ -179,7 +181,8 @@ function mousePressed() {
 
   function makeAliens() {
     // make the aliens
-    if (counter % 100 === 0) {
+    // if (counter % 100 === 0) {
+    if ((round(random(1,80))) === 5) {
       // Enemy sprite (alien) created here
       enemySprite = createSprite(width + 20, groundY - 20);
       enemySprite.scale = 0.2;
