@@ -35,7 +35,7 @@ let mainSpriteGroup;
 let alienGroup;
 let facePalmSpriteGroup;
 
-let randomNumber;
+
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
