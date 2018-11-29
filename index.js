@@ -35,6 +35,8 @@ let mainSpriteGroup;
 let alienGroup;
 let facePalmSpriteGroup;
 
+let timeSinceLast = 0; // this is a variable to ensure that the aliens dont get bunched up
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
@@ -179,15 +181,19 @@ function mousePressed() {
 
   function makeAliens() {
     // make the aliens
-    if (counter % 100 === 0) {
+    // if (counter % 100 === 0) {
+    if ((round(random(1,80))) === 5 && timeSinceLast >= 25) {
       // Enemy sprite (alien) created here
       enemySprite = createSprite(width + 20, groundY - 20);
       enemySprite.scale = 0.2;
       enemySprite.addImage(enemyImg);
       enemySprite.setSpeed(3.2, 180);
       alienGroup.add(enemySprite);
+
+      timeSinceLast = 0; // this is a counter variable to make sure they don't get bunched up
     }
     counter++; // increment the counter
+    timeSinceLast++; // increment the time since the last sprite to be generated
   }
 
   function ignore() {
