@@ -35,10 +35,14 @@ let mainSpriteGroup;
 let alienGroup;
 let facePalmSpriteGroup;
 
+let supaPowaSoundTrack;
+
 function preload() {
   spikeImg = loadImage("Smilee.png");
   enemyImg = loadImage("Alien.png");
   facePalmImg = loadImage("facePalm.png");
+
+  supaPowaSoundTrack = new Audio("Ove Melaa-Supa Powa C.mp3");
 }
 
 function setup() {
@@ -67,7 +71,9 @@ function setup() {
   facePalmSpriteGroup.add(facePalmSprite);
 }
 
-  function draw() {
+function draw() {
+    supaPowaSoundTrack.play();
+
     background(0, 0, 255);
     if (gameIsBeingPlayed) {
       //ENVIRONMENT IS DRAWN HERE
