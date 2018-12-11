@@ -36,6 +36,7 @@ let alienGroup;
 let facePalmSpriteGroup;
 
 let supaPowaSoundTrack;
+let enemyDiedSound;
 
 function preload() {
   spikeImg = loadImage("Smilee.png");
@@ -43,6 +44,7 @@ function preload() {
   facePalmImg = loadImage("facePalm.png");
 
   supaPowaSoundTrack = new Audio("Ove Melaa-Supa Powa C.mp3");
+  enemyDiedSound = new Audio("35.ogg");
 }
 
 function setup() {
@@ -73,7 +75,6 @@ function setup() {
 
 function draw() {
     supaPowaSoundTrack.play();
-
     background(0, 0, 255);
     if (gameIsBeingPlayed) {
       //ENVIRONMENT IS DRAWN HERE
@@ -133,6 +134,7 @@ function draw() {
 }
 
 function collisionCode(mainSprite, enemySprite) {
+  enemyDiedSound.play();
   enemySprite.remove(); // this removes the enemy sprite that was collided with
   gameIsBeingPlayed = false;
 }
