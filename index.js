@@ -1,3 +1,5 @@
+let canvas;
+
 // counter is made for frequency and timings of aliens here
 let counter = 0;
 
@@ -52,8 +54,9 @@ function preload() {
 
 function setup() {
 
-  createCanvas(700, 300);
+  canvas = createCanvas(700, 300);
   background(0, 0, 255);
+  canvas.parent('sketch-holder');
 
   // Main character smiley face created here
   mainSprite = createSprite(1, 1);
