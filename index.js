@@ -159,7 +159,7 @@ function playerGroundHeightCollisionStopper() {
 function userInput() {
   if (!jumping && keyCode === 32) {
     //going up
-    spriteSpeedY = -15;
+    spriteSpeedY = -17;
 
     //disallow jumping while already jumping
     jumping = true;
@@ -179,7 +179,7 @@ function endGameUserInput() {
 function mousePressed() {
   if (!jumping && gameIsBeingPlayed) {
     //going up
-    spriteSpeedY = -15;
+    spriteSpeedY = -17;
 
     //disallow jumping while already jumping
     jumping = true;
@@ -194,7 +194,7 @@ function mousePressed() {
   function makeAliens() {
     // make the aliens
     // if (counter % 100 === 0) {
-    if ((round(random(1,80))) === 5 && timeSinceLast >= 25) {
+    if ((round(random(1,80))) === 5 && timeSinceLast >= 30) {
       // Enemy sprite (alien) created here
       enemySprite = createSprite(width + 20, groundY - 20);
       enemySprite.scale = 0.2;
